@@ -7,14 +7,19 @@ const posts = require('../posts.js');
 router.get('/', (req, res) => {
 
     console.log('index');
+    // res.send('Posts list');
     res.json(posts);
 });
 
 // show
 router.get('/:id', (req, res) => {
 
-    console.log('show');
-    res.send(`Details of post ${req.params.id}`);
+    const param = req.params.id;
+    console.log(`show ${param}`);
+    // res.send(`Details of post ${req.params.id}`);
+    const foundPost = posts.find(elem => elem.slug === param);
+
+    res.json(foundPost);
 });
 
 // store 
@@ -27,21 +32,21 @@ router.post('/', (req, res) => {
 // update 
 router.put('/:id', (req, res) => {
 
-    console.log('update');
+    console.log(`update ${req.params.id}`);
     res.send(`Full post edit of ${req.params.id}`);
 }); 
 
 // modify 
 router.patch('/:id', (req, res) => {
 
-    console.log('modify');
+    console.log(`modify ${req.params.id}`);
     res.send(`Partial post edit of ${req.params.id}`);
 }); 
 
 // delete 
 router.delete('/:id', (req, res) => {
 
-    console.log('delete');
+    console.log(`delete ${req.params.id}`);
     res.send(`Deleting post ${req.params.id}`);
 });
 
