@@ -5,6 +5,8 @@ const port = 3000;
 
 const postsRouter = require('./routers/posts.js');
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
 
     console.log('base test');
